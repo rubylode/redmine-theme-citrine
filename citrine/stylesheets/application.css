@@ -1,0 +1,392 @@
+/* Citrine, a theme for Redmine 7
+ * Copyright (C) 2026  Nick Gorbikoff
+ *
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA. */
+
+@import url(/application.css);
+
+/* 1. Light tokens.
+ * Redmine 7 takes its colours from the Open Color palette (--oc-gray-0 to -9, and the same ramps for each hue, each with an
+ * -rgb twin) plus a few --color-* names. Remapping those variables recolours most of the application. */
+:root {
+  --fonts-main: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+  --citrine-serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+
+  /* Warm paper neutrals. Light steps (0 to 4) are surfaces and borders, dark steps (5 to 9) are text. */
+  --oc-gray-0: #fbf6ea;
+  --oc-gray-1: #f6efdc;
+  --oc-gray-2: #efe6cf;
+  --oc-gray-3: #e3d8bb;
+  --oc-gray-4: #d3c59f;
+  --oc-gray-5: #6b6150;
+  --oc-gray-6: #5e5546;
+  --oc-gray-7: #4a4234;
+  --oc-gray-8: #332d22;
+  --oc-gray-9: #1d1a14;
+  --oc-gray-9-rgb: 29, 26, 20;
+
+  /* Amber replaces the blue and indigo ramps. Links are a deep amber brown (7.4 to 1 on white); the bright amber is for fills. */
+  --citrine-amber-0: #fff8dc;
+  --citrine-amber-1: #ffefb0;
+  --citrine-amber-2: #ffe27a;
+  --citrine-amber-3: #ffd13d;
+  --citrine-amber-4: #f5be0a;
+  --citrine-amber-5: #e8a900;
+  --citrine-amber-6: #c58a00;
+  --citrine-amber-7: #8a5a00;
+  --citrine-amber-8: #6b4400;
+  --oc-blue-0: var(--citrine-amber-0);
+  --oc-blue-1: var(--citrine-amber-1);
+  --oc-blue-2: var(--citrine-amber-2);
+  --oc-blue-3: var(--citrine-amber-3);
+  --oc-blue-4: var(--citrine-amber-4);
+  --oc-blue-5: var(--citrine-amber-5);
+  --oc-blue-6: var(--citrine-amber-6);
+  --oc-blue-7: var(--citrine-amber-7);
+  --oc-blue-8: var(--citrine-amber-8);
+  --oc-blue-9: var(--citrine-amber-7); /* Redmine colours its links with step 9 */
+  --oc-blue-1-rgb: 255, 239, 176;
+  --oc-blue-7-rgb: 138, 90, 0;
+  --oc-indigo-0: var(--citrine-amber-0);
+  --oc-indigo-1: var(--citrine-amber-1);
+  --oc-indigo-5: var(--citrine-amber-5);
+  --oc-indigo-9: var(--citrine-amber-8);
+
+  --color-top-menu-background: #fbf6ea;
+  --color-header-background: #fbf6ea; /* the phone header uses it */
+
+  --citrine-paper: #fbf6ea;
+  --citrine-card: #fff;
+  --citrine-ink: #1d1a14;
+  --citrine-line: #1d1a14; /* the thick card borders and offset shadows */
+  --citrine-chip: #fff8dc;
+  --citrine-chip-ink: #6b4400;
+  --citrine-phone-menu: #1d1a14;
+  --citrine-phone-menu-ink: #efe6cf;
+}
+
+/* 2. Dark tokens: see the one block at the end of this file. */
+
+body { color: var(--oc-gray-9); background: var(--citrine-paper); }
+a:hover, a:active { color: var(--citrine-amber-8); text-decoration: underline; }
+#wrapper { background: var(--citrine-paper); }
+
+/* 3. Layout shell: pill tabs on top, a serif title, tile menus, cards in one centred column. */
+nav.top-menu {
+  position: relative;
+  background: var(--citrine-paper);
+  color: var(--oc-gray-7);
+  min-block-size: 56px;
+  padding-inline: 28px;
+  border: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.general-menu { flex: 1; display: flex; justify-content: center; }
+.top-menu__links ul { gap: 4px; }
+.top-menu__links a, .top-menu__links a:link, .top-menu__links a:visited, #account .dropdown-trigger {
+  color: var(--oc-gray-8);
+  border-radius: 999px;
+  padding-block: 7px;
+  padding-inline: 16px;
+  font-weight: 600;
+}
+.top-menu__links a:hover, #account .dropdown-trigger:hover { color: var(--citrine-paper); background: var(--citrine-ink); text-decoration: none; }
+.top-menu__links svg.icon-svg, #account .dropdown-trigger .icon-svg { stroke: currentColor; }
+.profile-menu { position: absolute; inset-inline-end: 28px; inset-block: 0; display: flex; align-items: center; }
+
+#header {
+  background: var(--citrine-paper);
+  color: var(--oc-gray-9);
+  padding: 8px 28px 12px;
+  border: 0;
+  text-align: center;
+}
+#header a { color: var(--oc-gray-8); }
+#header a:hover { color: var(--oc-gray-9); }
+#header h1 {
+  justify-content: center;
+  font-family: var(--citrine-serif);
+  font-size: 2.6rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  min-block-size: 0;
+  padding-block: 6px 10px;
+}
+#header h1 .breadcrumbs { font-family: var(--fonts-main); font-size: 0.9rem; font-weight: 500; letter-spacing: 0; color: var(--oc-gray-6); }
+#quick-search { float: none; display: flex; justify-content: center; align-items: center; gap: 10px; padding-block-end: 8px; }
+#quick-search form { display: flex; align-items: center; gap: 8px; margin: 0; }
+#quick-search #q {
+  border-radius: 999px;
+  border: 2px solid var(--citrine-line);
+  background: var(--citrine-card);
+  padding-inline: 16px;
+  inline-size: 220px;
+  block-size: 34px;
+}
+#quick-search form label { color: var(--oc-gray-6); }
+#project-jump .drdn-trigger { border: 2px solid var(--citrine-line); border-radius: 999px; background-color: var(--citrine-card); background-image: none; color: var(--oc-gray-9); padding-inline: 16px; block-size: 34px; }
+#project-jump .drdn-trigger::after { content: "\25BE"; margin-inline-start: 6px; }
+#project-jump .drdn-content { border: 2px solid var(--citrine-line); border-radius: 14px; box-shadow: 4px 4px 0 var(--citrine-line); z-index: 60; }
+
+/* Phones: Redmine hides the project name and shows a menu button in a 64px bar, and slides the menus in from the right. */
+body .flyout-menu { background-color: var(--citrine-phone-menu); }
+body .flyout-menu h3 { background-color: rgba(255, 255, 255, 0.08); border-block-color: var(--citrine-phone-menu); color: var(--citrine-phone-menu-ink); }
+body #header #project-jump .drdn-trigger { color: var(--oc-gray-9); }
+body #header a.mobile-toggle-button { color: var(--oc-gray-8); }
+body #header { border: 0; }
+
+/* The project menu is a row of chunky tiles: a thick ink border, an offset shadow, amber when selected. */
+#main-menu { position: static; background: transparent; padding-inline: 12px; }
+#header { block-size: auto; min-block-size: 0; }
+#content { min-inline-size: 0; flex: 1 1 0%; }
+#sidebar { flex: none; }
+#main-menu ul { justify-content: center; flex-wrap: wrap; gap: 10px; }
+#main-menu li a {
+  color: var(--oc-gray-9);
+  background: var(--citrine-card);
+  border: 2px solid var(--citrine-line);
+  border-radius: 14px;
+  padding: 7px 16px;
+  font-weight: 700;
+  box-shadow: 3px 3px 0 var(--citrine-line);
+  margin-block: 4px 6px;
+}
+#main-menu li a:hover { background: var(--citrine-amber-1); color: var(--oc-gray-9); text-decoration: none; transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--citrine-line); }
+#main-menu li a.selected, #main-menu li a.selected:hover { background: var(--citrine-amber-4); color: #1d1a14; box-shadow: 3px 3px 0 var(--citrine-line); transform: none; }
+#main-menu li a.new-object, #main-menu li a.new-object:hover { background: #1d1a14; color: #fff; border-color: #1d1a14; box-shadow: 3px 3px 0 var(--citrine-amber-5); }
+#main-menu .menu-children { border: 2px solid var(--citrine-line); border-radius: 14px; background: var(--citrine-card); box-shadow: 4px 4px 0 var(--citrine-line); padding: 6px; }
+#main-menu .menu-children li a { border: 0; box-shadow: none; margin: 0; background: transparent; border-radius: 8px; font-weight: 600; padding: 7px 10px; }
+#main-menu .menu-children li a:hover { background: var(--citrine-amber-1); transform: none; box-shadow: none; }
+
+#main { box-sizing: border-box; background: var(--citrine-paper); max-inline-size: 1280px; margin-inline: auto; padding-inline: 24px; gap: 24px; }
+#content {
+  background: var(--citrine-card);
+  margin-block: 12px 28px;
+  padding: 28px 32px;
+  border: 2px solid var(--citrine-line);
+  border-radius: 20px;
+  box-shadow: 5px 5px 0 var(--citrine-line);
+}
+#content > h2 { color: var(--oc-gray-9); font-family: var(--citrine-serif); font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; margin-block: 0 14px; }
+#content h3 { color: var(--oc-gray-9); font-family: var(--citrine-serif); font-weight: 700; }
+/* Headings inside wiki pages and descriptions: serif, ink coloured, below the page title. */
+.wiki h1, .wiki h2, .wiki h3, .wiki h4 { color: var(--oc-gray-9); font-family: var(--citrine-serif); font-weight: 700; letter-spacing: -0.01em; }
+.wiki h1 { font-size: 1.6rem; }
+.wiki h2 { font-size: 1.3rem; }
+.wiki h3 { font-size: 1.12rem; }
+.wiki table { border-collapse: collapse; }
+.wiki table th, .wiki table td { border: 1px solid var(--oc-gray-4); padding: 6px 10px; }
+.wiki table th { background: var(--oc-gray-1); }
+#sidebar { background: var(--citrine-card); border: 2px solid var(--citrine-line); border-radius: 16px; box-shadow: 3px 3px 0 var(--citrine-line); inline-size: 240px; margin-block: 12px 28px; padding: 16px 18px; box-sizing: border-box; align-self: flex-start; }
+#sidebar h3 { color: var(--oc-gray-6); font-family: var(--fonts-main); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
+#footer { background: transparent; border: 0; color: var(--oc-gray-6); }
+
+/* Administration: Redmine lists the admin menu in the page on the index and in the right-hand sidebar on every other admin page,
+ * so it jumps from one side to the other. The sidebar sits on the left, where the index list is. */
+#main:has(#sidebar #admin-menu) { flex-direction: row; }
+#main:has(#sidebar #admin-menu) #sidebar-switch-panel { display: none; }
+#admin-menu a { border-radius: 10px; padding: 7px 10px; display: block; font-weight: 600; }
+#admin-menu a:hover { background: var(--citrine-amber-1); color: var(--oc-gray-9); text-decoration: none; }
+#admin-menu a.selected, #admin-menu a.selected:hover { background: var(--citrine-amber-4); color: #1d1a14; }
+
+/* 4. Issues: the list, the issue page, history. */
+table.list { border: 0; }
+table.list th {
+  background: transparent;
+  color: var(--oc-gray-6);
+  font-weight: 700;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding-block: 10px;
+  border-block-end: 2px solid var(--citrine-line);
+}
+table.list th a { color: var(--oc-gray-6); }
+table.list td { padding-block: 11px; border-block-start: 1px dashed var(--oc-gray-4); }
+/* Paper stripes and thin dashed column lines; hover is amber instead of Redmine's yellow. */
+.box table.list:not(.odd-even) tbody tr:nth-child(even), .box .even,
+table.list:not(.odd-even) tbody tr:nth-child(even), .even { background-color: var(--oc-gray-0); }
+table.list:not(.odd-even) tbody tr:nth-child(odd), .odd { background-color: var(--oc-white); }
+table.list:not(.odd-even) tbody tr:nth-child(odd):hover, .odd:hover,
+table.list:not(.odd-even) tbody tr:nth-child(even):hover, .even:hover { background-color: var(--citrine-amber-0); }
+table.list > thead > tr > th + th, table.list > tbody > tr > td + td { border-inline-start: 1px dashed var(--oc-gray-3); }
+table.list > tbody > tr.group > td { border-inline-start: 0; }
+table.list td.subject a, table.list td.parent-subject a { color: var(--oc-gray-9); font-weight: 500; }
+table.list td.subject a:hover, table.list td.parent-subject a:hover { color: var(--citrine-amber-7); }
+table.list td.id a { font-weight: 700; }
+table.list td.assigned_to a, table.list td.author a { color: var(--oc-gray-7); }
+
+/* The list as a to-do list: a big round check before each subject, filled amber and ticked when the issue is closed. */
+table.list td.subject::before {
+  content: "";
+  display: inline-block;
+  box-sizing: border-box;
+  inline-size: 18px;
+  block-size: 18px;
+  margin-inline-end: 9px;
+  border: 2px solid var(--citrine-line);
+  border-radius: 50%;
+  vertical-align: -4px;
+  color: #1d1a14;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 14px;
+  text-align: center;
+}
+table.list tr.issue.closed td.subject::before { content: "\2713"; background: var(--citrine-amber-4); }
+table.list tr.issue.closed td.subject a { color: var(--oc-gray-6); text-decoration: line-through; text-decoration-thickness: 1px; }
+table.list tr.issue.overdue td.due_date { color: #a4242d; font-weight: 700; }
+
+table.list tr.group > td { padding-block: 20px 8px; background: var(--oc-white); border-block-start: 0; }
+table.list tr.group span.name { color: var(--oc-gray-9); font-family: var(--citrine-serif); font-size: 1.2rem; font-weight: 700; }
+table.list tr.group span.badge-count { background: var(--citrine-ink); color: var(--citrine-paper); font-weight: 700; }
+
+.tracker-chip { display: inline-block; padding: 2px 10px; border-radius: 999px; background: var(--citrine-chip); border: 1.5px solid var(--citrine-line); color: var(--citrine-chip-ink); font-size: 0.75rem; font-weight: 700; }
+.assignee-initials { display: inline-grid; place-items: center; inline-size: 24px; block-size: 24px; margin-inline-end: 6px; border: 2px solid var(--citrine-line); border-radius: 50%; background: var(--citrine-amber-4); color: #1d1a14; font-size: 0.625rem; font-weight: 800; vertical-align: middle; box-sizing: border-box; }
+.assignee-initials.tone-1 { background: #ffd1c2; }
+.assignee-initials.tone-2 { background: #c9ecd4; }
+.assignee-initials.tone-3 { background: #cfe3ff; }
+.assignee-initials.tone-4 { background: #e8d4ff; }
+.assignee-initials.tone-5 { background: #ffe0a8; }
+table.list td.assigned_to a.assignee-name { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+table.list td.assigned_to { white-space: nowrap; }
+
+/* The issue: a paper-coloured card inside the page card, with a dashed edge, and calmer headings inside the description. */
+div.issue { background: var(--oc-gray-0); border: 2px dashed var(--oc-gray-4); border-radius: 16px; padding: 20px 24px; }
+#content div.issue div.wiki h1 { font-size: 1.35em; }
+#content div.issue div.wiki h2 { font-size: 1.18em; }
+#content div.issue div.wiki h3 { font-size: 1.04em; }
+
+/* Activity: a serif date, then a feed with dashed lines. */
+div#activity h3 { margin: 22px 0 4px; padding: 0 0 6px; background: transparent; border: 0; border-block-end: 2px solid var(--citrine-line); color: var(--oc-gray-9); font-size: 1.1rem; }
+div#activity dl { margin: 0; }
+div#activity dt { background: transparent; border: 0; padding-block: 12px 0; }
+div#activity dd { margin-block: 0; padding-block: 2px 12px; border-block-end: 1px dashed var(--oc-gray-4); }
+div#activity dd .description { color: var(--oc-gray-7); }
+
+/* Avatars: Redmine's red, orange and pink do not reach 4.5 to 1 with white text, so those are darker. */
+.avatar-color-0 { background-color: #c92a2a; }
+.avatar-color-1 { background-color: #b4540a; }
+.avatar-color-7 { background-color: #c2255c; }
+
+/* Small fixes found by the contrast check. */
+span.badge.badge-count { background-color: var(--citrine-ink); color: var(--citrine-paper); }
+a.issue.tracker-2, a.issue.tracker-2:visited { color: var(--citrine-amber-7); }
+.syntaxhl .k { color: #006b00; }
+
+/* 5. Forms, buttons, flash messages, context menu, login. */
+input[type=text], input[type=password], input[type=email], input[type=number], input[type=search], input[type=date],
+input[type=url], input[type=tel], input:not([type]), select, textarea {
+  border: 2px solid var(--citrine-line);
+  border-radius: 10px;
+  background-color: var(--oc-white);
+  color: var(--oc-gray-9);
+  padding-inline: 10px;
+}
+input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=number]:focus, input[type=search]:focus,
+input[type=date]:focus, input[type=url]:focus, input:not([type]):focus, select:focus, textarea:focus {
+  outline: 3px solid var(--citrine-amber-3);
+  outline-offset: 0;
+}
+input[type=submit], input[type=button], input[type=reset], button, a.button {
+  border: 2px solid var(--citrine-line);
+  border-radius: 999px;
+  background: var(--citrine-card);
+  color: var(--oc-gray-9);
+  padding-block: 5px;
+  padding-inline: 18px;
+  font-weight: 700;
+  box-shadow: 2px 2px 0 var(--citrine-line);
+  cursor: pointer;
+}
+input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover, button:hover, a.button:hover { background: var(--citrine-amber-1); text-decoration: none; }
+input[type=submit] { background: var(--citrine-amber-4); color: #1d1a14; }
+input[type=submit]:hover { background: var(--citrine-amber-3); }
+div.flash { border-radius: 14px; border-width: 2px; }
+#login-form { background: var(--citrine-card); border: 2px solid var(--citrine-line); border-radius: 20px; padding: 30px; box-shadow: 5px 5px 0 var(--citrine-line); }
+#login-form a.lost_password { color: var(--citrine-amber-7); }
+
+/* 6. Everything else follows from the tokens. Fix only what is clearly broken. */
+
+/* 7. Dark, from the system setting. Every dark rule is in this one block; delete it to keep the theme light-only. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --oc-white: #26231b;
+    --oc-gray-0: #2c281f;
+    --oc-gray-1: #332e24;
+    --oc-gray-2: #3b3629;
+    --oc-gray-3: #4a4332;
+    --oc-gray-4: #5d5440;
+    --oc-gray-5: #b6ab94;
+    --oc-gray-6: #c4baa5;
+    --oc-gray-7: #d6ceba;
+    --oc-gray-8: #e8e1d0;
+    --oc-gray-9: #f7f2e4;
+    --oc-gray-9-rgb: 247, 242, 228;
+
+    /* Links and accents are the light end of the amber ramp; fills keep bright amber with dark text. */
+    --oc-blue-0: #3a3012;
+    --oc-blue-1: #4c3e12;
+    --oc-blue-7: var(--citrine-amber-3);
+    --oc-blue-9: var(--citrine-amber-3);
+    --oc-blue-1-rgb: 76, 62, 18;
+    --oc-blue-7-rgb: 255, 209, 61;
+
+    --color-top-menu-background: #1c1a15;
+    --color-header-background: #1c1a15;
+    --citrine-paper: #1c1a15;
+    --citrine-card: #26231b;
+    --citrine-ink: #f7f2e4;
+    --citrine-line: #f7f2e4;
+    --citrine-chip: #3a3012;
+    --citrine-chip-ink: #ffe27a;
+  }
+
+  a:hover, a:active { color: var(--citrine-amber-2); }
+  table.list td.subject a:hover, table.list td.parent-subject a:hover,
+  a.issue.tracker-2, a.issue.tracker-2:visited, #login-form a.lost_password { color: var(--citrine-amber-3); }
+  .top-menu__links a:hover, #account .dropdown-trigger:hover { color: #1c1a15; background: var(--citrine-amber-4); }
+  #main-menu li a.new-object, #main-menu li a.new-object:hover { background: var(--citrine-amber-4); color: #1d1a14; border-color: var(--citrine-amber-4); box-shadow: 3px 3px 0 #f7f2e4; }
+  #main-menu li a:hover { background: #4c3e12; color: #f7f2e4; }
+  #main-menu li a.selected, #main-menu li a.selected:hover { background: var(--citrine-amber-4); color: #1d1a14; }
+  #admin-menu a:hover { background: #4c3e12; color: #f7f2e4; }
+  #admin-menu a.selected, #admin-menu a.selected:hover { color: #1d1a14; }
+  #main-menu .menu-children li a:hover { background: #4c3e12; }
+  input[type=submit]:hover { background: var(--citrine-amber-3); color: #1d1a14; }
+  input[type=submit], input[type=button], input[type=reset], button, a.button { box-shadow: 2px 2px 0 #f7f2e4; }
+  input[type=submit] { color: #1d1a14; }
+  input[type=submit]:hover, input[type=button]:hover, input[type=reset]:hover, button:hover, a.button:hover { background: #4c3e12; }
+  input[type=submit]:hover { background: var(--citrine-amber-3); }
+  table.list tr.issue.closed td.subject::before { color: #1d1a14; }
+  table.list tr.issue.overdue td.due_date { color: #ff8f87; }
+  .assignee-initials, .assignee-initials.tone-1, .assignee-initials.tone-2, .assignee-initials.tone-3, .assignee-initials.tone-4, .assignee-initials.tone-5 { color: #1d1a14; }
+
+  /* Redmine paints white text with the same variable that is now a dark surface, so white text on colour is set by hand. */
+  [class*="avatar-color-"] { color: #fff; }
+  span.badge.badge-count { background-color: #f7f2e4; color: #1c1a15; }
+  .pagination ul.pages li.current { background-color: var(--citrine-amber-4); border-color: var(--citrine-amber-4); }
+  .pagination ul.pages li.current span { color: #1d1a14; }
+  .avatar-color-2 { color: #1d1a14; }
+  span.required { color: #ff8f87; }
+  a.issue.tracker-1, a.issue.tracker-1:visited { color: #ff8f87; }
+
+  /* Code blocks stay light: the syntax colours are made for a light background. */
+  pre, div.wiki pre, div.pre-wrapper pre, code.syntaxhl, div.wiki code.syntaxhl, div.pre-wrapper code { background-color: #f6efdc; color: #1d1a14; }
+  .avatar-color-5 { background-color: #8a5a00; }
+}
