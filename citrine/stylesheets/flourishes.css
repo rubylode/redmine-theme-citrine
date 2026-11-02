@@ -1,0 +1,179 @@
+/* Rubylode Citrine, a theme for Redmine 7
+ * Copyright (C) 2026  Nick Gorbikoff
+ * GNU General Public License, version 2 or later. See the LICENSE file.
+ * Generated from the shared base of the Rubylode themes: a change made here is overwritten by the next build. */
+
+/* Citrine's own touches, the ones tokens cannot express:
+ *  1. Thick ink outlines with hard offset shadows on the page card, the sidebar, popups, fields and buttons.
+ *  2. The project tabs as chunky tiles that wrap onto more rows, the top links as pills that fill with ink.
+ *  3. The issue list as a to-do list: a round check before each subject, ticked when the issue is closed.
+ *  4. The tracker chip and the round assignee initials that extra.js adds.
+ *  5. The phone slide-out menu, dark in both schemes. */
+
+/* ==========================================================================
+   1. Outlines and offset shadows
+   ========================================================================== */
+#main { box-sizing: border-box; max-inline-size: 1280px; margin-inline: auto; padding-inline: 24px; gap: 24px; }
+@media screen and (min-width: 900px) { #header h1 { font-size: 1.6rem; letter-spacing: -0.02em; } }
+#content {
+  background: var(--theme-surface);
+  margin-block: 12px 28px;
+  padding: 28px 32px;
+  border: 2px solid var(--theme-ink);
+  border-radius: 20px;
+  box-shadow: 5px 5px 0 var(--theme-ink);
+}
+#content > h2 { font-size: 2rem; letter-spacing: -0.02em; margin-block: 0 14px; }
+#sidebar #sidebar-wrapper { border: 2px solid var(--theme-ink); box-shadow: 3px 3px 0 var(--theme-ink); }
+#login-form { border: 2px solid var(--theme-ink); border-radius: 20px; box-shadow: 5px 5px 0 var(--theme-ink); }
+#account .dropdown-content, #main-menu .menu-children, #project-jump .drdn-content { border: 2px solid var(--theme-ink); }
+
+/* Fields and buttons */
+input[type=text], input[type=password], input[type=email], input[type=number], input[type=search], input[type=date],
+input[type=url], input[type=tel], input:not([type]), select, textarea { border-width: 2px; }
+input[type=submit], input[type=button], input[type=reset],
+button:not(.tab-left):not(.tab-right):not(.icon-only):not(.ui-button):not(.ui-dialog-titlebar-close):not(.jstElements button), a.button {
+  border-width: 2px;
+  border-radius: var(--theme-radius-pill);
+  box-shadow: 2px 2px 0 var(--theme-ink);
+}
+input[type=submit]:not([name=continue]):not([name=preview]):not(.button-small), #login-form input#login-submit {
+  border-width: 2px;
+  border-color: var(--theme-ink);
+}
+#content > .contextual > a, #content > .contextual > .drdn > .drdn-trigger, div.issue .contextual > a, #sidebar .contextual > a,
+#content a.button, #query_form p.buttons a, #query_form_with_buttons p.buttons a, p.buttons > a.icon {
+  border-width: 2px;
+  border-radius: var(--theme-radius-pill);
+}
+div.flash, #errorExplanation { border-width: 2px; }
+
+/* Lists sit flat in the page card: a dashed rule, no frame of their own */
+table.list, #content .wiki table { border: 0; box-shadow: none; border-radius: 0; background: transparent; }
+table.list > thead > tr > th { background: transparent; border-block-end: 2px solid var(--theme-ink); border-inline-start-style: dashed; color: var(--theme-ink-soft); }
+table.list > tbody > tr > td { border-inline-start-style: dashed; }
+table.list tr.group span.name { font-family: var(--theme-title-font); font-size: 1.2rem; }
+table.list tr.group span.badge-count, span.badge.badge-count { background-color: var(--theme-ink); color: var(--theme-page); }
+
+/* The issue card: paper, a dashed edge */
+div.issue.details { background: var(--theme-page); border: 2px dashed var(--theme-line); border-inline-start: 4px solid var(--st); box-shadow: none; }
+
+/* ==========================================================================
+   2. Top links as pills, project tabs as tiles
+   ========================================================================== */
+.top-menu__links a:hover, #account .dropdown-trigger:hover { background-color: var(--theme-ink); color: var(--theme-page); }
+@media screen and (min-width: 900px) {
+  nav#top-menu.top-menu { border-block-end: 2px solid var(--theme-ink); }
+  .top-menu__links a, .top-menu__links a:link, .top-menu__links a:visited { padding-inline: 14px; border-radius: var(--theme-radius-pill); font-weight: 600; }
+  #header, body.has-main-menu #header { border-block-end: 0; padding-block: 6px; }
+  #main-menu li a {
+    block-size: 38px;
+    margin-block: 0;
+    padding: 0 16px;
+    border: 2px solid var(--theme-ink);
+    border-radius: var(--theme-radius);
+    background: var(--theme-surface);
+    color: var(--theme-ink);
+    box-shadow: 3px 3px 0 var(--theme-ink);
+    font-weight: 700;
+  }
+  #main-menu li a:hover { background: var(--theme-accent-1); color: var(--theme-ink); transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--theme-ink); }
+  #main-menu li a.selected, #main-menu li a.selected:hover {
+    background: var(--theme-accent-4);
+    color: #1d1a14;
+    border: 2px solid var(--theme-ink);
+    border-image: none;
+    transform: none;
+    box-shadow: 3px 3px 0 var(--theme-ink);
+  }
+  /* The tiles wrap onto more rows instead of scrolling behind arrows, as in Citrine 1.0.0, so every tab is in reach. */
+  #main-menu { overflow: visible; }
+  #main-menu .tabs-buttons, #main-menu button.tab-left, #main-menu button.tab-right { display: none !important; }
+  #main-menu ul { flex-wrap: wrap; row-gap: 8px; padding-block: 6px 8px; }
+  #main-menu li { margin-inline-end: 10px; }
+  #main-menu li a.new-object, #main-menu li a.new-object:hover { background: var(--theme-ink); color: var(--theme-page); border-color: var(--theme-ink); box-shadow: 3px 3px 0 var(--theme-accent-5); font-size: 20px; }
+  #main-menu .menu-children li a { border: 0; box-shadow: none; background: transparent; border-radius: 8px; block-size: auto; transform: none; }
+  #main-menu .menu-children li a:hover { background: var(--theme-surface-hover); }
+  #main-menu .tabs-buttons { background: transparent; }
+  #header #quick-search input[type=text], #header #project-jump .drdn-trigger { border-width: 2px; }
+}
+
+/* ==========================================================================
+   3. The issue list as a to-do list
+   ========================================================================== */
+table.list.issues td.subject::before {
+  content: "";
+  display: inline-block;
+  box-sizing: border-box;
+  inline-size: 18px;
+  block-size: 18px;
+  margin-inline-end: 9px;
+  border: 2px solid var(--theme-ink);
+  border-radius: 50%;
+  vertical-align: -4px;
+  color: #1d1a14;
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 14px;
+  text-align: center;
+}
+table.list.issues tr.issue.closed td.subject::before { content: "\2713"; background: var(--theme-accent-4); }
+table.list.issues tr.issue.closed td.subject a { text-decoration: line-through; text-decoration-thickness: 1px; }
+/* A child row keeps the arrow the base draws in its indent */
+table.list.issues tr.idnt td.subject::before { inline-size: 16px; block-size: auto; margin-inline: -18px 0; border: 0; border-radius: 0; background: none; color: var(--theme-ink-muted); font-size: inherit; font-weight: 400; line-height: inherit; vertical-align: baseline; }
+table.list.issues tr.idnt.closed td.subject::before { content: "\21B3"; background: none; }
+
+/* ==========================================================================
+   4. Tracker chip and assignee initials (extra.js)
+   ========================================================================== */
+.tracker-chip {
+  display: inline-block;
+  padding: 2px 10px;
+  border: 1.5px solid var(--theme-ink);
+  border-radius: var(--theme-radius-pill);
+  background: var(--theme-tracker-chip-background);
+  color: var(--theme-tracker-chip-ink);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.assignee-initials {
+  display: inline-grid;
+  place-items: center;
+  box-sizing: border-box;
+  inline-size: 24px;
+  block-size: 24px;
+  margin-inline-end: 6px;
+  border: 2px solid var(--theme-ink);
+  border-radius: var(--theme-radius-round);
+  background: var(--theme-initials-tone-0);
+  color: var(--theme-initials-ink);
+  font-size: 0.625rem;
+  font-weight: 800;
+  vertical-align: middle;
+}
+.assignee-initials.tone-1 { background: var(--theme-initials-tone-1); }
+.assignee-initials.tone-2 { background: var(--theme-initials-tone-2); }
+.assignee-initials.tone-3 { background: var(--theme-initials-tone-3); }
+.assignee-initials.tone-4 { background: var(--theme-initials-tone-4); }
+.assignee-initials.tone-5 { background: var(--theme-initials-tone-5); }
+/* In a list the initials replace the name, which stays in the page for screen readers and shows as a tooltip. */
+table.list td.assigned_to a.assignee-name { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+table.list td.assigned_to { white-space: nowrap; }
+
+/* ==========================================================================
+   5. The phone slide-out menu: dark in both schemes
+   ========================================================================== */
+body .flyout-menu { background-color: var(--theme-phone-menu-background); color: var(--theme-phone-menu-ink); }
+body .flyout-menu h3 { background-color: rgba(255, 255, 255, 0.08); border-block-color: var(--theme-phone-menu-background); color: var(--theme-phone-menu-ink); }
+body .flyout-menu a, body .flyout-menu a:link, body .flyout-menu a:visited, body .flyout-menu .icon-label { color: var(--theme-phone-menu-ink); }
+body .flyout-menu a.selected, body .flyout-menu a.selected:link, body .flyout-menu a.selected:hover { color: #ffd13d; }
+body .flyout-menu a:hover { color: #ffffff; }
+body .flyout-menu ul li { border-block-color: rgba(255, 255, 255, 0.1); }
+body .flyout-menu .flyout-menu__avatar { background: rgba(255, 255, 255, 0.1); }
+
+/* ==========================================================================
+   6. Dark: the primary colour is bright amber, so text on it is ink, not the white the base writes for a dark surface
+   ========================================================================== */
+@media (prefers-color-scheme: dark) {
+  .avatar-color-5, .pagination ul.pages li.current span, .pagination ul.pages li.current a { color: var(--theme-ink-on-primary); }
+}

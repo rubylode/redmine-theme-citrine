@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <title>Citrine</title>
+  <circle cx="17" cy="17" r="12" fill="#1d1a14"/>
+  <circle cx="15" cy="15" r="12" fill="#f5be0a" stroke="#1d1a14" stroke-width="2.4"/>
+  <path d="M9.5 15.5l4 4 8-8.5" fill="none" stroke="#1d1a14" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

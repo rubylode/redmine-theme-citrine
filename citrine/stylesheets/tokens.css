@@ -1,0 +1,229 @@
+/* Rubylode Citrine, a theme for Redmine 7
+ * Copyright (C) 2026  Nick Gorbikoff
+ * GNU General Public License, version 2 or later. See the LICENSE file.
+ * Generated from the shared base of the Rubylode themes: a change made here is overwritten by the next build. */
+
+/* Citrine's tokens, light values. The dark values of the same names are in dark.css. */
+:root {
+  /* Surfaces: cream paper with white cards on it. */
+  --theme-page: #fbf6ea;
+  --theme-surface: #ffffff;
+  --theme-surface-sunken: #f9f2df;      /* attribute panels, journal headers, table stripes */
+  --theme-surface-hover: #fff3c4;       /* hovered rows and menu items: pale amber */
+  --theme-line: #cdbf98;                /* row lines and panel borders: tan, dashed */
+  --theme-line-soft: #e3d8bb;           /* column lines, quiet chips */
+  --theme-line-strong: #1d1a14;         /* field borders and the thick outlines: ink */
+
+  /* Text. All three reach WCAG AA on every surface above. */
+  --theme-ink: #1d1a14;
+  --theme-ink-soft: #4a4234;
+  --theme-ink-muted: #675d4c;
+  --theme-ink-on-colour: #ffffff;
+  --theme-ink-on-light-colour: #1d1a14;
+
+  /* The accent: amber, light to dark. Step 4 is the button colour, step 7 the link colour. */
+  --theme-accent-0: #fff8dc;
+  --theme-accent-1: #ffefb0;
+  --theme-accent-2: #ffe27a;
+  --theme-accent-3: #ffd13d;
+  --theme-accent-4: #f5be0a;
+  --theme-accent-5: #e8a900;
+  --theme-accent-6: #9c6700;
+  --theme-accent-7: #8a5a00;
+  --theme-accent-8: #6b4400;
+  --theme-accent-9: #4a2f00;
+  --theme-accent-1-rgb: 255, 239, 176;
+
+  /* A second and third hue, used sparingly: a cool lilac for selection and a coral for search highlights. */
+  --theme-secondary: #d9c7ff;
+  --theme-secondary-pale: #f1eaff;
+  --theme-tertiary: #ffc2a8;
+  --theme-tertiary-pale: #ffe9df;
+  --theme-accent-pale: #fff3c4;
+
+  --theme-link: var(--theme-accent-7);
+  --theme-link-hover: var(--theme-accent-8);
+  --theme-primary: var(--theme-accent-4);
+  --theme-primary-hover: var(--theme-accent-3);
+  --theme-ink-on-primary: #1d1a14;
+  --theme-primary-background: var(--theme-accent-4);
+  --theme-primary-background-hover: var(--theme-accent-3);
+  --theme-redmine-accent: var(--theme-accent-7);
+  --theme-redmine-accent-rgb: 138, 90, 0;
+  --theme-selected-tab-border-image: none;
+
+  /* The header: flat paper with ink text. */
+  --theme-header-background: var(--theme-page);
+  --theme-header-background-solid: #fbf6ea;
+  --theme-header-ink: var(--theme-ink);
+  --theme-header-link: var(--theme-ink);
+  --theme-header-hover-background: #ffefb0;
+  --theme-header-line: #1d1a14;
+  --theme-header-field-background: #ffffff;
+  --theme-header-field-border: #1d1a14;
+  --theme-mark-image: url("../images/citrine-mark.svg");
+
+  /* The project sidebar, in the sidebar layout only. */
+  --theme-sidebar-width: 240px;
+  --theme-sidebar-background: var(--theme-surface);
+  --theme-sidebar-line: var(--theme-line-strong);
+  --theme-sidebar-tile: var(--theme-accent-4);
+  --theme-sidebar-hover-background: var(--theme-accent-0);
+  --theme-sidebar-selected-background: var(--theme-accent-2);
+  --theme-sidebar-selected-ink: var(--theme-ink);
+  --theme-sidebar-selected-edge: var(--theme-ink);
+
+  /* Buttons that are not the primary: white with an ink outline. Delete buttons: a tint of red. */
+  --theme-button-background: #ffffff;
+  --theme-button-border: #1d1a14;
+  --theme-button-ink: #1d1a14;
+  --theme-danger-soft: #fdebe9;
+  --theme-danger-soft-border: #ef9f9a;
+  --theme-danger-ink: #9c2420;
+
+  /* Focus: a deep amber outline with a bright amber halo. */
+  --theme-focus: var(--theme-accent-7);
+  --theme-focus-halo: rgba(255, 209, 61, 0.7);
+
+  /* Meaning. Status ids in a default Redmine: 1 New, 2 In Progress, 3 Resolved, 4 Feedback, 5 Closed, 6 Rejected. */
+  --theme-status-new: #2a6fa8;
+  --theme-status-in-progress: #b86f00;
+  --theme-status-resolved: #2f8a4e;
+  --theme-status-feedback: #8556b0;
+  --theme-status-closed: #6b6354;
+  --theme-status-rejected: #c8414b;
+  --theme-success: #2f8a4e;
+  --theme-warning: #c98a12;
+  --theme-danger: #c8414b;
+  --theme-danger-strong: #a8282c;
+  --theme-success-ink: #1d5a33;
+  --theme-success-soft: #e3f2e8;
+  --theme-caution-ink: #6b4400;
+  --theme-caution-soft: #fff1c9;
+  --theme-chip-ink-mix: #000000;
+  --theme-chip-ink-share: 60%;
+  --theme-chip-fill-share: 16%;
+
+  /* Messages, avatars, activity markers, search highlights, diffs and the Gantt chart. */
+  --theme-flash-success-background: #e7f4ec;
+  --theme-flash-success-border: #7fbf95;
+  --theme-flash-success-ink: #1d5a33;
+  --theme-flash-warning-background: #fff1c9;
+  --theme-flash-warning-border: #e0b54a;
+  --theme-flash-warning-ink: #5f3f00;
+  --theme-avatar-color-0: #c92a2a;
+  --theme-avatar-color-1: #b4540a;
+  --theme-avatar-color-7: #c2255c;
+  --theme-activity-edit-ink: #4b3f78;
+  --theme-activity-wiki-ink: #7a3f22;
+  --theme-search-highlight-ink: var(--theme-ink);
+  --theme-diff-removed: #fde7e9;
+  --theme-diff-added: #e1f3e6;
+  --theme-gantt-late: #e7a26b;
+  --theme-gantt-late-label: #8a4a12;
+
+  /* Shape and depth: big round corners, and shadows that are a hard offset copy of the outline. */
+  --theme-radius-highlight: 4px;
+  --theme-radius-inline: 6px;
+  --theme-radius-small: 10px;
+  --theme-radius: 14px;
+  --theme-radius-panel: 16px;
+  --theme-radius-pill: 999px;
+  --theme-radius-round: 50%;
+  --theme-border-width: 1px;
+  --theme-border-style: dashed;
+  --theme-shadow-card: 3px 3px 0 var(--theme-line);
+  --theme-shadow-popup: 4px 4px 0 var(--theme-ink);
+  --theme-shadow-primary-button: 2px 2px 0 var(--theme-ink);
+  --theme-shadow-header-scrolled: 0 2px 0 var(--theme-ink);
+  --theme-space-small: 8px;
+  --theme-space: 16px;
+  --theme-space-large: 28px;
+  --theme-density: 1.2;
+  --theme-top-bar-height: 56px;
+  --theme-project-bar-height: 60px;
+
+  /* Type: Noto Sans for text and Noto Sans Mono for code, both bundled by the base. Titles keep Citrine's serif, a system stack with no
+     font files. --theme-font-size is the size of running text; every other text size follows it. */
+  --theme-font-size: 16px;
+  --theme-font: "Noto Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --theme-font-monospace: "Noto Sans Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --theme-title-font: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+  --theme-title-weight: 700;
+  --theme-code-background: #f6efdc;
+  --theme-code-ink: #1d1a14;
+  --theme-syntax-keyword: #006b00;
+
+  /* Icons drawn in a stylesheet carry their colour inside the image. */
+  --theme-select-arrow-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231d1a14' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  --theme-search-field-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231d1a14' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E");
+  --theme-project-jump-arrow-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231d1a14' stroke-width='2.4'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+
+  /* Redmine's grey ramp (--oc-gray-0 to -9) and its white: warm paper greys. */
+  --theme-redmine-white: #ffffff;
+  --theme-neutral-0: #fbf6ea;
+  --theme-neutral-1: #f6efdc;
+  --theme-neutral-2: #efe6cf;
+  --theme-neutral-3: #e3d8bb;
+  --theme-neutral-4: #d3c59f;
+  --theme-neutral-5: #675d4c;
+  --theme-neutral-6: #5e5546;
+  --theme-neutral-7: #4a4234;
+  --theme-neutral-8: #332d22;
+  --theme-neutral-9: #1d1a14;
+  --theme-neutral-9-rgb: 29, 26, 20;
+
+  /* Citrine's own: the tracker chip and the six colours of the round assignee initials (extra.js). The initials keep dark text
+     in both schemes, so their fills stay light. */
+  --theme-tracker-chip-background: #fff8dc;
+  --theme-tracker-chip-ink: #6b4400;
+  --theme-initials-ink: #1d1a14;
+  --theme-initials-tone-0: #f5be0a;
+  --theme-initials-tone-1: #ffd1c2;
+  --theme-initials-tone-2: #c9ecd4;
+  --theme-initials-tone-3: #cfe3ff;
+  --theme-initials-tone-4: #e8d4ff;
+  --theme-initials-tone-5: #ffe0a8;
+  --theme-phone-menu-background: #1d1a14;
+  --theme-phone-menu-ink: #efe6cf;
+}
+
+/* Redmine's palette, pointed at the tokens. Redmine 7 colours itself with the Open Color variables (--oc-*) and a few
+ * --color-* names, so remapping them recolours the parts of Redmine the theme does not style by hand. */
+:root {
+  --fonts-main: var(--theme-font);
+
+  --oc-white: var(--theme-redmine-white);
+  --oc-gray-0: var(--theme-neutral-0);
+  --oc-gray-1: var(--theme-neutral-1);
+  --oc-gray-2: var(--theme-neutral-2);
+  --oc-gray-3: var(--theme-neutral-3);
+  --oc-gray-4: var(--theme-neutral-4);
+  --oc-gray-5: var(--theme-neutral-5);
+  --oc-gray-6: var(--theme-neutral-6);
+  --oc-gray-7: var(--theme-neutral-7);
+  --oc-gray-8: var(--theme-neutral-8);
+  --oc-gray-9: var(--theme-neutral-9);
+  --oc-gray-9-rgb: var(--theme-neutral-9-rgb);
+
+  --oc-blue-0: var(--theme-accent-0);
+  --oc-blue-1: var(--theme-accent-1);
+  --oc-blue-2: var(--theme-accent-2);
+  --oc-blue-3: var(--theme-accent-3);
+  --oc-blue-4: var(--theme-accent-4);
+  --oc-blue-5: var(--theme-accent-5);
+  --oc-blue-6: var(--theme-accent-6);
+  --oc-blue-7: var(--theme-redmine-accent);
+  --oc-blue-8: var(--theme-accent-7);
+  --oc-blue-9: var(--theme-link); /* Redmine colours its links with step 9 */
+  --oc-blue-1-rgb: var(--theme-accent-1-rgb);
+  --oc-blue-7-rgb: var(--theme-redmine-accent-rgb);
+  --oc-indigo-0: var(--theme-accent-0);
+  --oc-indigo-1: var(--theme-accent-1);
+  --oc-indigo-2: var(--theme-accent-2);
+  --oc-indigo-5: var(--theme-accent-5);
+  --oc-indigo-9: var(--theme-accent-9);
+
+  --color-top-menu-background: var(--theme-header-background-solid);
+  --color-header-background: var(--theme-header-background-solid);
+}

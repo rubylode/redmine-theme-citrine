@@ -1,0 +1,135 @@
+/* Rubylode Citrine, a theme for Redmine 7
+ * Copyright (C) 2026  Nick Gorbikoff
+ * GNU General Public License, version 2 or later. See the LICENSE file.
+ * Generated from the shared base of the Rubylode themes: a change made here is overwritten by the next build. */
+
+/* Dark, from the system setting (prefers-color-scheme). Every dark value and rule is in this one file, loaded last:
+ * remove its import from responsive.css to keep the theme light-only. */
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+  }
+
+  /* Citrine's tokens, dark values: warm charcoal paper, cream ink and outlines, amber lifted for links. A name not set here keeps
+   * its light value from tokens.css. */
+  :root {
+    --theme-page: #1c1a15;
+    --theme-surface: #26231b;
+    --theme-surface-sunken: #2c281f;
+    --theme-surface-hover: #3a3012;
+    --theme-line: #5d5440;
+    --theme-line-soft: #3b3629;
+    --theme-line-strong: #f7f2e4;
+
+    --theme-ink: #f7f2e4;
+    --theme-ink-soft: #e8e1d0;
+    --theme-ink-muted: #b6ab94;
+
+    --theme-accent-0: #3a3012;
+    --theme-accent-1: #4c3e12;
+    --theme-accent-2: #6b4f0a;
+    --theme-accent-8: #ffe27a;
+    --theme-accent-9: #ffefb0;
+    --theme-accent-1-rgb: 76, 62, 18;
+
+    --theme-secondary-pale: #2b273f;
+    --theme-tertiary-pale: #3d2a1e;
+    --theme-accent-pale: #3a3012;
+
+    --theme-link: #ffd13d;
+    --theme-link-hover: #ffe27a;
+    --theme-redmine-accent: #ffd13d;
+    --theme-redmine-accent-rgb: 255, 209, 61;
+
+    --theme-header-background: #1c1a15;
+    --theme-header-background-solid: #1c1a15;
+    --theme-header-hover-background: #4c3e12;
+    --theme-header-line: #f7f2e4;
+    --theme-header-field-background: #26231b;
+    --theme-header-field-border: #f7f2e4;
+
+    --theme-sidebar-tile: var(--theme-accent-4);
+    --theme-sidebar-selected-background: #4c3e12;
+    --theme-sidebar-selected-ink: #f7f2e4;
+
+    --theme-button-background: #26231b;
+    --theme-button-border: #f7f2e4;
+    --theme-button-ink: #f7f2e4;
+    --theme-danger-soft: #42221f;
+    --theme-danger-soft-border: #7f312b;
+    --theme-danger-ink: #ffaea5;
+
+    --theme-focus: #ffd13d;
+    --theme-focus-halo: rgba(255, 209, 61, 0.3);
+
+    --theme-status-new: #7fb4e8;
+    --theme-status-in-progress: #ffd13d;
+    --theme-status-resolved: #5fcf86;
+    --theme-status-feedback: #c3a0e8;
+    --theme-status-closed: #5fcf86;
+    --theme-status-rejected: #ff8f87;
+    --theme-success: #5fcf86;
+    --theme-warning: #f5be0a;
+    --theme-danger: #ff8f87;
+
+    --theme-chip-ink-mix: #ffffff;
+    --theme-chip-ink-share: 55%;
+    --theme-chip-fill-share: 24%;
+
+    --theme-shadow-card: 3px 3px 0 #000000;
+    --theme-shadow-popup: 4px 4px 0 #000000;
+    --theme-shadow-primary-button: 2px 2px 0 #000000;
+    --theme-shadow-header-scrolled: 0 2px 0 #000000;
+
+    /* Code blocks stay light: the syntax colours are made for a light background. */
+    --theme-code-background: #f6efdc;
+    --theme-code-ink: #1d1a14;
+
+    --theme-success-ink: #8fe0ad;
+    --theme-success-soft: #173d27;
+    --theme-caution-ink: #ffd13d;
+    --theme-caution-soft: #4a3a0a;
+
+    --theme-flash-success-background: #173d27;
+    --theme-flash-success-border: #2f8a4e;
+    --theme-flash-success-ink: #c2f0d2;
+    --theme-flash-warning-background: #4a3a0a;
+    --theme-flash-warning-border: #a37a0a;
+    --theme-flash-warning-ink: #ffe9a8;
+    --theme-activity-edit-ink: #c5b8f5;
+    --theme-activity-wiki-ink: #ffb088;
+    --theme-search-highlight-ink: #ffe9a8;
+    --theme-diff-removed: #42221f;
+    --theme-diff-added: #173d27;
+    --theme-gantt-late-label: #ffb088;
+
+    --theme-tracker-chip-background: #3a3012;
+    --theme-tracker-chip-ink: #ffe27a;
+    --theme-phone-menu-background: #14120e;
+
+    /* The select arrow, the magnifier and the project switcher arrow are drawn in cream. */
+    --theme-select-arrow-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f7f2e4' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+    --theme-search-field-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f7f2e4' stroke-width='2.2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E");
+    --theme-project-jump-arrow-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f7f2e4' stroke-width='2.4'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+
+    /* Redmine's own palette, dark. --oc-white is the panel colour, so the base sets white text on colour by hand. */
+    --theme-redmine-white: var(--theme-surface);
+    --theme-neutral-0: #2c281f;
+    --theme-neutral-1: #332e24;
+    --theme-neutral-2: #3b3629;
+    --theme-neutral-3: #4a4332;
+    --theme-neutral-4: #5d5440;
+    --theme-neutral-5: #b6ab94;
+    --theme-neutral-6: #c4baa5;
+    --theme-neutral-7: #d6ceba;
+    --theme-neutral-8: #e8e1d0;
+    --theme-neutral-9: #f7f2e4;
+    --theme-neutral-9-rgb: 247, 242, 228;
+  }
+
+  /* White text on colour: Redmine writes it with --oc-white, which is a dark surface in the dark scheme. */
+  [class*="avatar-color-"], span.badge.badge-count, .pagination ul.pages li.current span, .pagination ul.pages li.current a { color: var(--theme-ink-on-colour); }
+  .avatar-color-2 { color: var(--theme-ink-on-light-colour); }
+  .avatar-color-5 { background-color: var(--theme-primary); }
+  a.issue.tracker-1, a.issue.tracker-1:visited { color: var(--theme-danger-ink); }
+}
