@@ -1,5 +1,7 @@
 # Rubylode Citrine for Redmine
 
+<p><img src="docs/thumbnail.png" alt="Rubylode Citrine theme" width="160"></p>
+
 A warm theme for Redmine 7 and up: cream paper and amber, thick ink outlines with hard offset shadows, serif titles and a to-do list look in the issue list.
 
 It is plain CSS plus one small script (`javascripts/theme.js`), with no plugin, no build step and no change to Redmine itself.
