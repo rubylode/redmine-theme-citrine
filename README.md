@@ -2,6 +2,12 @@
 
 <p><img src="docs/thumbnail.png" alt="Rubylode Citrine theme" width="160"></p>
 
+[![check](https://img.shields.io/github/actions/workflow/status/rubylode/redmine-theme-citrine/check.yml?branch=main&label=check)](https://github.com/rubylode/redmine-theme-citrine/actions/workflows/check.yml)
+[![security](https://img.shields.io/github/actions/workflow/status/rubylode/redmine-theme-citrine/security.yml?branch=main&label=security)](https://github.com/rubylode/redmine-theme-citrine/actions/workflows/security.yml)
+[![version](https://img.shields.io/github/v/tag/rubylode/redmine-theme-citrine?sort=semver&label=version)](https://github.com/rubylode/redmine-theme-citrine/tags)
+[![license](https://img.shields.io/github/license/rubylode/redmine-theme-citrine)](https://github.com/rubylode/redmine-theme-citrine/blob/main/LICENSE)
+![Redmine](https://img.shields.io/badge/Redmine-7.0-b22222)
+
 A warm theme for Redmine 7 and up: cream paper and amber, thick ink outlines with hard offset shadows, serif titles and a to-do list look in the issue list.
 
 It is plain CSS plus one small script (`javascripts/theme.js`), with no plugin, no build step and no change to Redmine itself.
